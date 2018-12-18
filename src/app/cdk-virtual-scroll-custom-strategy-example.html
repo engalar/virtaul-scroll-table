@@ -1,0 +1,40 @@
+<div class="sc-header-wrapper">
+    <table class="sc-header">
+        <thead>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        </thead>
+    </table>
+</div>
+
+<cdk-virtual-scroll-viewport class="sc-body-wrapper">
+    <table class="sc-body">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <tbody>
+        <tr *cdkVirtualFor="let item of items;
+                       let index = index;
+                       let count = count;
+                       let first = first;
+                       let last = last;
+                       let even = even;
+                       let odd = odd;" class="example-item">
+            <td>{{index}}</td>
+            <ng-container [appMyDirective]="item"></ng-container>
+        </tr>
+        </tbody>
+    </table>
+</cdk-virtual-scroll-viewport>
+<ng-template #colA let-row>
+    <td>colA {{row}}</td>
+</ng-template>
+<ng-template #colB let-row>
+    <td>colB {{row}}</td>
+</ng-template>
+<ng-template #colC let-row>
+    <td>colC {{row}}</td>
+</ng-template>
