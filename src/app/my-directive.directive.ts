@@ -14,6 +14,29 @@ export class MyDirectiveDirective implements OnChanges {
       this._vc.createEmbeddedView(this.c.colA, {$implicit: this.appMyDirective});
       this._vc.createEmbeddedView(this.c.colB, {$implicit: this.appMyDirective});
       this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
     }
   }
 

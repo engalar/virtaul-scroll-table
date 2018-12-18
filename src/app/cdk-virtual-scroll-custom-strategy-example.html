@@ -22,8 +22,8 @@
                        let first = first;
                        let last = last;
                        let even = even;
-                       let odd = odd;" class="example-item">
-            <td>{{index}}</td>
+                       let odd = odd;" class="example-item"
+        (viewChange)="onViewChange($event)">
             <ng-container [appMyDirective]="item"></ng-container>
         </tr>
         </tbody>
