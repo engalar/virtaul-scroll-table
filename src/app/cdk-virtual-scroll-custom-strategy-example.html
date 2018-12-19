@@ -1,40 +1,31 @@
 <div class="sc-header-wrapper">
     <table class="sc-header">
         <thead>
-        <th>A</th>
-        <th>B</th>
-        <th>C</th>
+        <tr>
+            <th *ngFor="let c of columns$|async">{{c.name}}</th>
+        </tr>
         </thead>
     </table>
 </div>
-
 <cdk-virtual-scroll-viewport class="sc-body-wrapper">
     <table class="sc-body">
         <colgroup>
-            <col>
-            <col>
-            <col>
+            <col *ngFor="let c of columns$|async" [width]="c.width" style="background-color: antiquewhite">
         </colgroup>
         <tbody>
-        <tr *cdkVirtualFor="let item of items;
-                       let index = index;
-                       let count = count;
-                       let first = first;
-                       let last = last;
-                       let even = even;
-                       let odd = odd;" class="example-item"
-        (viewChange)="onViewChange($event)">
-            <ng-container [appMyDirective]="item"></ng-container>
+        <tr [class.odd]="odd"
+            *cdkVirtualFor="let item of items; let index = index; let count = count; let first = first; let last = last; let even = even; let odd = odd;"
+            class="example-item">
+            <ng-container [appMyDirective]="item" [appMyDirectiveColumns]="columns"></ng-container>
         </tr>
         </tbody>
     </table>
 </cdk-virtual-scroll-viewport>
-<ng-template #colA let-row>
-    <td>colA {{row}}</td>
-</ng-template>
-<ng-template #colB let-row>
-    <td>colB {{row}}</td>
-</ng-template>
-<ng-template #colC let-row>
-    <td>colC {{row}}</td>
+
+<ng-template #colC let-row let-column="column">
+    <td
+            [style.max-width.px]="column?.width"
+            [style.min-width.px]="column?.width"
+            [style.width.px]="column?.width"
+    >{{column?.name}} {{row}}</td>
 </ng-template>

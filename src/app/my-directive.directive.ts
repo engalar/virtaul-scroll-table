@@ -1,43 +1,34 @@
-import {Directive, Input, OnChanges, SimpleChanges, ViewContainerRef} from '@angular/core';
+import {Directive, DoCheck, Input, OnChanges, OnInit, SimpleChanges, ViewContainerRef} from '@angular/core';
 import {CdkVirtualScrollCustomStrategyExample} from "./cdk-virtual-scroll-custom-strategy-example";
 
 @Directive({
-  selector: '[appMyDirective]'
+    selector: '[appMyDirective]'
 })
-export class MyDirectiveDirective implements OnChanges {
-  @Input() appMyDirective: any;
-  constructor(private _vc: ViewContainerRef, private c: CdkVirtualScrollCustomStrategyExample) { }
+export class MyDirectiveDirective implements OnChanges, OnInit {
+    @Input() appMyDirective: any;
+    @Input('appMyDirectiveColumns') columns: any[];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.hasOwnProperty('appMyDirective')) {
-      this._vc.clear();
-      this._vc.createEmbeddedView(this.c.colA, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colB, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
-      this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective});
+    constructor(private _vc: ViewContainerRef, private c: CdkVirtualScrollCustomStrategyExample) {
     }
-  }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.hasOwnProperty('appMyDirective')) {
+            if (!changes.appMyDirective.firstChange) {
+                this._vc.clear();
+            }
+            this.c.columns.forEach(value => {
+                this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective[value.name]});
+            });
+        }
+    }
+
+    ngOnInit(): void {
+        this.c.columns$.subscribe(columns => {
+            this._vc.clear();
+            columns.forEach(column => {
+                this._vc.createEmbeddedView(this.c.colC, {$implicit: this.appMyDirective[column.name], column});
+            });
+        });
+    }
 
 }

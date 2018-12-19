@@ -11,6 +11,7 @@
 
     .sc-body {
         min-width: 100%;
+        //width: 30000px;
     }
 }
 
@@ -23,4 +24,13 @@
 
 .example-item {
     height: 34px;
+    &.odd {
+        background-color: #c9ffe5;
+    }
+
+    td{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }
