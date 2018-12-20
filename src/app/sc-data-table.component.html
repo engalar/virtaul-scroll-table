@@ -1,0 +1,38 @@
+<div class="ui-table-scrollable-header ui-widget-header">
+    <div class="ui-table-scrollable-header-box" style="margin-right: 17px;" [style.margin-left.px]="headerMarginLeft">
+        <table class="ui-table-scrollable-header-table" [style.width.px]="tableWidth">
+            <colgroup>
+                <col *ngFor="let c of columns$|async" [style.width.px]="c.width">
+            </colgroup>
+            <thead class="ui-table-thead">
+            <tr>
+                <th *ngFor="let c of columns$|async" class="ui-resizable-column">{{c.name}}<span
+                        class="ui-column-resizer ui-clickable"></span></th>
+            </tr>
+            </thead>
+            <tbody class="ui-table-tbody"></tbody>
+        </table>
+    </div>
+</div>
+
+<cdk-virtual-scroll-viewport class="ui-table-scrollable-body">
+    <table class="ui-table-scrollable-body-table" [style.width.px]="tableWidth">
+        <colgroup>
+            <col *ngFor="let c of columns$|async" [style.width.px]="c.width">
+        </colgroup>
+        <tbody class="ui-table-tbody">
+        <tr [class.odd]="odd"
+            *cdkVirtualFor="let item of items; let index = index; let count = count; let first = first; let last = last; let even = even; let odd = odd;"
+            class="example-item">
+            <ng-container [appMyDirective]="item" [appMyDirectiveColumns]="columns"></ng-container>
+        </tr>
+        </tbody>
+    </table>
+</cdk-virtual-scroll-viewport>
+
+
+<div #resizeHelper class="ui-column-resizer-helper ui-state-highlight" style="display:none" *ngIf="resizableColumns"></div>
+
+<ng-template #colC let-row let-column="column">
+    <td class="ui-resizable-column">{{column?.name}} {{row}}</td>
+</ng-template>

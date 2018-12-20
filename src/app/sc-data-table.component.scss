@@ -5,6 +5,28 @@
     flex-direction: column;
 }
 
+.ui-table-scrollable-header {
+    overflow: hidden;
+    .ui-table-scrollable-header-table {
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+}
+
+.ui-table-scrollable-body {
+    flex: auto;
+    .ui-table-scrollable-body-table {
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+}
+
+
+
+
+
+
+
 .sc-body-wrapper {
     flex: auto;
     border: 1px solid black;

@@ -1,5 +1,5 @@
 import {Directive, DoCheck, Input, OnChanges, OnInit, SimpleChanges, ViewContainerRef} from '@angular/core';
-import {CdkVirtualScrollCustomStrategyExample} from "./cdk-virtual-scroll-custom-strategy-example";
+import {ScDataTableComponent} from "./sc-data-table.component";
 
 @Directive({
     selector: '[appMyDirective]'
@@ -8,7 +8,7 @@ export class MyDirectiveDirective implements OnChanges, OnInit {
     @Input() appMyDirective: any;
     @Input('appMyDirectiveColumns') columns: any[];
 
-    constructor(private _vc: ViewContainerRef, private c: CdkVirtualScrollCustomStrategyExample) {
+    constructor(private _vc: ViewContainerRef, private c: ScDataTableComponent) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {

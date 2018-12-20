@@ -5,8 +5,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {DemoMaterialModule} from "./material-module";
 import {MatNativeDateModule} from "@angular/material";
-import {CdkVirtualScrollCustomStrategyExample} from "./app/cdk-virtual-scroll-custom-strategy-example";
+import {ScDataTableComponent} from "./app/sc-data-table.component";
 import {MyDirectiveDirective} from "./app/my-directive.directive";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 @NgModule({
     imports: [
@@ -17,11 +18,12 @@ import {MyDirectiveDirective} from "./app/my-directive.directive";
         DemoMaterialModule,
         MatNativeDateModule,
         ReactiveFormsModule,
+        ScrollingModule,
     ],
-    entryComponents: [CdkVirtualScrollCustomStrategyExample],
-    declarations: [CdkVirtualScrollCustomStrategyExample,
+    entryComponents: [ScDataTableComponent],
+    declarations: [ScDataTableComponent,
         MyDirectiveDirective],
-    bootstrap: [CdkVirtualScrollCustomStrategyExample],
+    bootstrap: [ScDataTableComponent],
     providers: []
 })
 export class AppModule {
