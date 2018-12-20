@@ -1,0 +1,33 @@
+<sc-data-table class="io-by-files-table"
+               [searchString]="searchString"
+               [isLoading]="loading"
+               [data]="data"
+               [columns]="columns"
+               [orders]="orders"
+               [sortable]="true"
+               [select]="select"
+               [noDataMessage]="'noDataMessage'">
+  <td *scDataTableTpl="'logicalFileName$cell'; let column=column; let row=row" class="sc-table-cell-wrapper">
+    <span class="text-truncated" style="display: block; flex: auto;">
+      <div class="column-percent"
+           title="{{ column.cellFn(row) }}">
+        <div class="column-text text-truncated">{{ tableUtils.limitStringWithMiddleDots(column.cellFn(row), 60) }}</div>
+        <div class="column-background" [style.width.%]="row.totalPercent" [class.column-hide]="row.totalPercent==0"></div>
+      </div>
+    </span>
+    <span class="sc-table-padding"></span>
+  </td>
+
+  <!-- todo: semantic html problem -->
+  <th class="header-wrapper" *scDataTableTpl="'logicalFileName$header'; let column=column;">
+    <div class="header-text">
+      <div class="header-title">{{ column.title }}</div>
+      <!-- todo: use sc-select -->
+      <div class="header-subtitle drop-menu">
+        <span class="blue-square"></span>
+        <span class="main-metric-text"></span>
+        <span class="drop-menu-icon"></span>
+      </div>
+    </div>
+  </th>
+</sc-data-table>

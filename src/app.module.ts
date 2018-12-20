@@ -6,8 +6,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {DemoMaterialModule} from "./material-module";
 import {MatNativeDateModule} from "@angular/material";
 import {ScDataTableComponent} from "./app/sc-data-table.component";
-import {MyDirectiveDirective} from "./app/my-directive.directive";
 import {ScrollingModule} from "@angular/cdk/scrolling";
+import { WrapperComponent } from './app/wrapper/wrapper.component';
+import {ScDataTableTplDirective} from "./app/sc-data-table-tpl.directive";
+import { HeadRenderDirective } from './app/head-render.directive';
+import { CellRenderDirective } from './app/cell-render.directive';
 
 @NgModule({
     imports: [
@@ -20,10 +23,13 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
         ReactiveFormsModule,
         ScrollingModule,
     ],
-    entryComponents: [ScDataTableComponent],
+    entryComponents: [WrapperComponent],
     declarations: [ScDataTableComponent,
-        MyDirectiveDirective],
-    bootstrap: [ScDataTableComponent],
+        ScDataTableTplDirective,
+        WrapperComponent,
+        HeadRenderDirective,
+        CellRenderDirective],
+    bootstrap: [WrapperComponent],
     providers: []
 })
 export class AppModule {
